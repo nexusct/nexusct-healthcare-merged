@@ -883,6 +883,7 @@ async function askLeadCapture() {
   }
   addMessage("ai", "Almost done! To generate your personalized system estimate, please provide your contact information.");
   addOptions(NexusLeadCapture.getInlineFormHtml());
+}
 
 window.submitLeadForm = async function() {
   const name = document.getElementById('leadName')?.value?.trim();
@@ -909,46 +910,6 @@ window.submitLeadForm = async function() {
   disableAllOptions();
   addMessage('user', name + ' — ' + facility);
   await typeDelay();
-  showDesigning();
-  return; // Skip original implementation below
-  // --- Original submitLeadForm below (unreachable) ---
-  const name = document.getElementById('leadName')?.value.trim();
-  const email = document.getElementById('leadEmail')?.value.trim();
-  const phone = document.getElementById('leadPhone')?.value.trim();
-  const facility = document.getElementById('leadFacility')?.value.trim();
-  const notes = document.getElementById('leadNotes')?.value.trim();
-  const errorEl = document.getElementById('leadError');
-
-  const missing = [];
-  if (!name) missing.push('Full Name');
-  if (!email) missing.push('Email Address');
-  if (!phone) missing.push('Phone Number');
-  if (!facility) missing.push('Facility Name');
-
-  if (missing.length > 0) {
-    errorEl.textContent = 'Please fill in: ' + missing.join(', ');
-    errorEl.style.display = 'block';
-    return;
-  }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    errorEl.textContent = 'Please enter a valid email address.';
-    errorEl.style.display = 'block';
-    return;
-  }
-
-  errorEl.style.display = 'none';
-  disableAllOptions();
-
-  answers.leadName = name;
-  answers.leadEmail = email;
-  answers.leadPhone = phone;
-  answers.leadFacility = facility;
-  answers.leadNotes = notes;
-
-  addMessage('user', `${name} — ${facility}`);
-  await typeDelay(500);
-  addMessage('ai', "Excellent! I have everything I need. Let me design your system now...");
-  await new Promise(r => setTimeout(r, 1200));
   showDesigning();
 };
 

@@ -1084,74 +1084,46 @@
 </head>
 <body>
 
-<div class="nc-page-bg">
-  <div class="nc-chat-container" id="ncChatContainer">
-    <div class="nc-chat-window" id="ncChatWindow">
-      <div class="nc-chat-header">
-        <div class="nc-chat-avatar">
-          <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6L13 3L22 6V13C22 18 13 23 13 23C13 23 4 18 4 13V6Z" fill="white" opacity="0.9"/><path d="M9 13L12 16L17 10" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<main>
+
+  <!-- Progress Bar -->
+  <div id="progressWrap" class="nc-progress-wrap">
+    <div class="container">
+      <div class="nc-progress-inner">
+        <span class="nc-progress-label">Nurse Call Designer</span>
+        <div class="nc-progress-bar">
+          <div class="nc-progress-fill" id="progressFill" style="width:0%"></div>
         </div>
-        <div class="nc-chat-header-text">
-          <h4>NexusCT System Designer</h4>
-          <span>Nurse Call Configuration Assistant</span>
-        </div>
-        <div class="nc-chat-status"></div>
-      </div>
-      <div class="nc-messages" id="ncMessages">
-        <!-- Messages injected here by JS -->
+        <span class="nc-progress-step" id="progressText">Step 0 of 12</span>
       </div>
     </div>
   </div>
 
-  <!-- Results Mode -->
-  <div class="nc-results-container" id="ncResults">
-    <!-- Filled by JS -->
+  <!-- Chat View -->
+  <div id="chatView" class="nc-configurator-chat">
+    <div class="container">
+      <div id="chatMessages" class="chat-messages-container"></div>
+    </div>
   </div>
-</div>
+
+  <!-- Designing Spinner View -->
+  <div id="designingView" class="designing-view" style="display:none;">
+    <div class="designing-spinner">
+      <div class="spinner-ring"></div>
+      <div class="spinner-ring"></div>
+      <div class="spinner-ring"></div>
+    </div>
+    <h2>Designing Your System</h2>
+    <p id="designingSubtext">Analyzing facility requirements and optimizing component selection</p>
+  </div>
+
+  <!-- Quote View -->
+  <div id="quoteView" class="quote-view" style="display:none;"></div>
+
+  <!-- Admin View -->
+  <div id="adminView" class="admin-view" style="display:none;"></div>
 
 </main>
-
-<!-- Comparison Modal -->
-<div class="nc-modal-overlay" id="ncCompareModal">
-  <div class="nc-modal">
-    <div class="nc-modal-header">
-      <h3><i class="fa-solid fa-chart-bar me-2"></i>Platform Comparison</h3>
-      <button class="nc-modal-close" onclick="document.getElementById('ncCompareModal').classList.remove('active')"><i class="fa-solid fa-xmark"></i></button>
-    </div>
-    <div style="overflow-x:auto">
-    <table class="nc-compare-table">
-      <thead>
-        <tr>
-          <th>Feature</th>
-          <th>Jeron Provider 790</th>
-          <th>Jeron Provider 700</th>
-          <th>RCare G4 Wireless</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td class="feature-name">Architecture</td><td>IP-Based</td><td>Networked</td><td>Fully Wireless</td></tr>
-        <tr><td class="feature-name">Wiring Required</td><td>Yes (Cat6)</td><td>Yes (Cat5e+)</td><td><span class="nc-compare-check"><i class="fa-solid fa-circle-check"></i> None</span></td></tr>
-        <tr><td class="feature-name">Touchscreen Console</td><td><span class="nc-compare-check"><i class="fa-solid fa-circle-check"></i></span></td><td><span class="nc-compare-check"><i class="fa-solid fa-circle-check"></i></span></td><td><span class="nc-compare-check"><i class="fa-solid fa-circle-check"></i></span></td></tr>
-        <tr><td class="feature-name">VoIP Integration</td><td><span class="nc-compare-check"><i class="fa-solid fa-circle-check"></i></span></td><td><span class="nc-compare-x"><i class="fa-solid fa-circle-xmark"></i></span></td><td><span class="nc-compare-x"><i class="fa-solid fa-circle-xmark"></i></span></td></tr>
-        <tr><td class="feature-name">EHR Integration</td><td><span class="nc-compare-check"><i class="fa-solid fa-circle-check"></i></span></td><td>Limited</td><td>Via API</td></tr>
-        <tr><td class="feature-name">Wireless Alerting</td><td><span class="nc-compare-check"><i class="fa-solid fa-circle-check"></i></span></td><td><span class="nc-compare-check"><i class="fa-solid fa-circle-check"></i></span></td><td><span class="nc-compare-check"><i class="fa-solid fa-circle-check"></i></span></td></tr>
-        <tr><td class="feature-name">Staff Locating (RTLS)</td><td><span class="nc-compare-check"><i class="fa-solid fa-circle-check"></i></span></td><td><span class="nc-compare-check"><i class="fa-solid fa-circle-check"></i></span></td><td>Zone-level</td></tr>
-        <tr><td class="feature-name">UL-1069 Certified</td><td><span class="nc-compare-check"><i class="fa-solid fa-circle-check"></i></span></td><td><span class="nc-compare-check"><i class="fa-solid fa-circle-check"></i></span></td><td>Available</td></tr>
-        <tr><td class="feature-name">Deployment Speed</td><td>Standard</td><td>Standard</td><td><span class="nc-compare-check"><i class="fa-solid fa-circle-check"></i> Rapid</span></td></tr>
-        <tr><td class="feature-name">Best For</td><td>Hospitals, Large SNFs</td><td>SNFs, Sub-acute</td><td>Assisted Living, Retrofit</td></tr>
-        <tr><td class="feature-name">Scalability</td><td>Enterprise</td><td>Mid-scale</td><td>Flexible</td></tr>
-      </tbody>
-    </table>
-    </div>
-  </div>
-</div>
-
-<!-- Admin Panel -->
-<div class="nc-admin-overlay" id="ncAdminOverlay">
-  <div id="ncAdminContent">
-    <!-- Login or panel injected by JS -->
-  </div>
-</div>
 
 
 
