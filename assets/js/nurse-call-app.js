@@ -2,7 +2,7 @@
 // NexusCT Nurse Call System Designer — App Logic
 // =====================================================
 
-// CGI_BIN not needed — using localStorage backend
+// CGI_BIN not needed — using NexusStorage backend
 const CGI_BIN = null;
 
 // ---- Theme Toggle ----
@@ -902,10 +902,10 @@ window.submitLeadForm = async function() {
   }
   // Store via shared module
   const leadData = { name, email, phone, facility, notes, timestamp: new Date().toISOString(), context: 'nurse-call' };
-  sessionStorage.setItem('nexus_lead', JSON.stringify(leadData));
-  const allLeads = JSON.parse(localStorage.getItem('nexus_leads') || '[]');
+  NexusStorage.session.setItem('nexus_lead', JSON.stringify(leadData));
+  const allLeads = JSON.parse(NexusStorage.local.getItem('nexus_leads') || '[]');
   allLeads.push(leadData);
-  localStorage.setItem('nexus_leads', JSON.stringify(allLeads));
+  NexusStorage.local.setItem('nexus_leads', JSON.stringify(allLeads));
   answers.lead = leadData;
   disableAllOptions();
   addMessage('user', name + ' — ' + facility);

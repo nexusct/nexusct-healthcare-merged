@@ -320,12 +320,12 @@ const NexusPricing = (() => {
 
   function addToCombinedQuote(key, quoteData) {
     _combinedQuotes[key] = quoteData;
-    sessionStorage.setItem('nexus_combined_quotes', JSON.stringify(_combinedQuotes));
+    NexusStorage.session.setItem('nexus_combined_quotes', JSON.stringify(_combinedQuotes));
     renderCombinedQuoteButton();
   }
 
   function getCombinedQuotes() {
-    const stored = sessionStorage.getItem('nexus_combined_quotes');
+    const stored = NexusStorage.session.getItem('nexus_combined_quotes');
     if (stored) {
       Object.assign(_combinedQuotes, JSON.parse(stored));
     }

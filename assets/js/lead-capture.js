@@ -1,7 +1,7 @@
 // =====================================================
 // NexusCT Shared Lead Capture Gate v1.0
 // Gates all pricing calculations across configurators
-// Uses sessionStorage for cross-page persistence
+// Uses NexusStorage for cross-page persistence (safe fallback)
 // =====================================================
 
 const NexusLeadCapture = (() => {
@@ -14,14 +14,14 @@ const NexusLeadCapture = (() => {
 
   // ---- Check if lead already captured ----
   function checkGate() {
-    const stored = sessionStorage.getItem(STORAGE_KEY);
+    const stored = NexusStorage.session.getItem(STORAGE_KEY);
     if (stored) {
       try {
         _leadData = JSON.parse(stored);
         _isOpen = true;
         return true;
       } catch (e) {
-        sessionStorage.removeItem(STORAGE_KEY);
+        NexusStorage.session.removeItem(STORAGE_KEY);
       }
     }
     return false;
@@ -233,12 +233,12 @@ const NexusLeadCapture = (() => {
         // Store
         _leadData = { name, email, phone, facility, notes, timestamp: new Date().toISOString(), context };
         _isOpen = true;
-        sessionStorage.setItem(STORAGE_KEY, JSON.stringify(_leadData));
+        NexusStorage.session.setItem(STORAGE_KEY, JSON.stringify(_leadData));
 
-        // Also store in localStorage for admin panel access
-        const allLeads = JSON.parse(localStorage.getItem('nexus_leads') || '[]');
+        // Also store in local storage for admin panel access
+        const allLeads = JSON.parse(NexusStorage.local.getItem('nexus_leads') || '[]');
         allLeads.push(_leadData);
-        localStorage.setItem('nexus_leads', JSON.stringify(allLeads));
+        NexusStorage.local.setItem('nexus_leads', JSON.stringify(allLeads));
 
         // Animate out
         overlay.style.animation = 'leadFadeIn 0.2s ease reverse';
@@ -321,7 +321,7 @@ const NexusLeadCapture = (() => {
   function clear() {
     _leadData = null;
     _isOpen = false;
-    sessionStorage.removeItem(STORAGE_KEY);
+    NexusStorage.session.removeItem(STORAGE_KEY);
   }
 
   // ---- Public API ----
