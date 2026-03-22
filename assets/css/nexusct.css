@@ -13,9 +13,9 @@
   --primary-light: #1a87d4;
   --secondary: #4CAF50;
   --secondary-dark: #3d9142;
-  --dark-bg: #0d1b2e;
-  --dark-bg2: #1a2f4a;
-  --body-bg: #f8f9fc;
+  --dark-bg: #ffffff;
+  --dark-bg2: #f0f4f8;
+  --body-bg: #ffffff;
   --white: #ffffff;
   --text-dark: #1a1a2e;
   --text-body: #4a5568;
@@ -351,18 +351,18 @@ ul { list-style: none; margin: 0; padding: 0; }
 
 /* ---- Home Hero ---- */
 .home-hero {
-  background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-bg2) 55%, #0c2a4a 100%);
+  background: #ffffff;
   min-height: 90vh; display: flex; align-items: center;
   position: relative; overflow: hidden;
   padding: 100px 0 80px;
 }
 .home-hero::before {
   content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 70% 50%, rgba(0,102,179,0.2) 0%, transparent 60%);
+  background: radial-gradient(ellipse at 70% 50%, rgba(0,102,179,0.06) 0%, transparent 60%);
 }
 .hero-grid-pattern {
   position: absolute; inset: 0; opacity: 0.04;
-  background-image: linear-gradient(var(--primary) 1px, transparent 1px),
+  background-image: linear-gradient(rgba(0,102,179,0.06) 1px, transparent 1px),
     linear-gradient(90deg, var(--primary) 1px, transparent 1px);
   background-size: 40px 40px;
 }
@@ -834,13 +834,13 @@ textarea.form-control-nx { resize: vertical; min-height: 120px; }
 
 /* ---- Hero Section (homepage) ---- */
 .hero-section {
-  background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-bg2) 55%, #0c2a4a 100%);
+  background: #ffffff;
   padding: 100px 0 80px;
   position: relative; overflow: hidden;
 }
 .hero-section::before {
   content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 70% 50%, rgba(0,102,179,0.2) 0%, transparent 60%);
+  background: radial-gradient(ellipse at 70% 50%, rgba(0,102,179,0.06) 0%, transparent 60%);
 }
 .hero-section .container { position: relative; z-index: 1; }
 .hero-title {
@@ -1213,4 +1213,243 @@ textarea.form-control-nx { resize: vertical; min-height: 120px; }
   .config-panel { padding: 20px; }
   .division-card { padding: 24px 20px; }
   .tool-card { padding: 24px 20px; }
+}
+
+
+/* =====================================================
+   WHITE BACKGROUND THEME OVERRIDES
+   All sections now use white backgrounds with dark text
+   ===================================================== */
+
+/* ---- Topbar: light version ---- */
+.header-topbar {
+  background: var(--white) !important;
+  border-bottom: 1px solid var(--border);
+}
+.header-topbar,
+.header-topbar a,
+.header-topbar span {
+  color: var(--text-body) !important;
+}
+.topbar-social a {
+  background: rgba(0,102,179,0.08) !important;
+  color: var(--primary) !important;
+}
+.topbar-social a:hover {
+  background: var(--primary) !important;
+  color: var(--white) !important;
+}
+
+/* ---- Hero Section (homepage): light ---- */
+.hero-section {
+  background: var(--white) !important;
+  color: var(--text-dark);
+}
+.hero-section::before,
+.hero-section .hero-overlay,
+.hero-section .hero-grid {
+  opacity: 0.3;
+}
+.hero-section h1,
+.hero-section h2 {
+  color: var(--text-dark) !important;
+}
+.hero-section p {
+  color: var(--text-body) !important;
+}
+.hero-section .hero-highlight {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+.hero-badge {
+  background: rgba(0,102,179,0.08) !important;
+  border: 1px solid rgba(0,102,179,0.2) !important;
+  color: var(--primary) !important;
+}
+.hero-badge .badge-icon {
+  color: var(--primary) !important;
+}
+
+/* ---- Stat cards in hero: light ---- */
+.stat-card {
+  background: rgba(0,102,179,0.04) !important;
+  border: 1px solid var(--border) !important;
+}
+.stat-card:hover {
+  background: rgba(0,102,179,0.08) !important;
+  border-color: rgba(0,102,179,0.2) !important;
+}
+.stat-card .stat-number {
+  color: var(--primary) !important;
+}
+.stat-card .stat-label {
+  color: var(--text-body) !important;
+}
+
+/* ---- Page Hero (subpages): light ---- */
+.page-hero,
+.page-hero.bg-dark {
+  background: var(--white) !important;
+  color: var(--text-dark) !important;
+}
+.page-hero h1,
+.page-hero h2 {
+  color: var(--text-dark) !important;
+}
+.page-hero p,
+.page-hero .lead {
+  color: var(--text-body) !important;
+}
+.page-hero .text-white {
+  color: var(--text-dark) !important;
+}
+
+/* ---- bg-dark sections: now white ---- */
+.bg-dark,
+.bg-dark-nx,
+section.bg-dark {
+  background: var(--white) !important;
+  color: var(--text-dark) !important;
+}
+.bg-dark h1, .bg-dark h2, .bg-dark h3, .bg-dark h4, .bg-dark h5, .bg-dark h6 {
+  color: var(--text-dark) !important;
+}
+.bg-dark p, .bg-dark span, .bg-dark li, .bg-dark a:not(.btn) {
+  color: var(--text-body) !important;
+}
+.bg-dark .text-white,
+.bg-dark .text-white-50 {
+  color: var(--text-body) !important;
+}
+section.bg-dark.text-white,
+section.bg-dark.text-white h1,
+section.bg-dark.text-white h2,
+section.bg-dark.text-white h3 {
+  color: var(--text-dark) !important;
+}
+section.bg-dark.text-white p,
+section.bg-dark.text-white li {
+  color: var(--text-body) !important;
+}
+
+/* ---- Bootstrap text-white override ---- */
+.page-hero .text-white,
+.hero-section .text-white {
+  color: var(--text-dark) !important;
+}
+
+/* ---- Section badges in dark sections ---- */
+.bg-dark .section-badge,
+.hero-section .section-badge {
+  background: rgba(0,102,179,0.08) !important;
+  border-left-color: var(--primary) !important;
+  color: var(--primary) !important;
+}
+
+/* ---- Trust badges: light ---- */
+.trust-badge {
+  background: rgba(0,102,179,0.04) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text-body) !important;
+}
+.trust-badge:hover {
+  background: rgba(0,102,179,0.08) !important;
+  border-color: rgba(0,102,179,0.2) !important;
+}
+
+/* ---- Footer: light ---- */
+.footer-area,
+footer,
+.site-footer {
+  background: var(--white) !important;
+  color: var(--text-body) !important;
+  border-top: 1px solid var(--border);
+}
+.footer-area h3, .footer-area h4, .footer-area h5,
+footer h3, footer h4, footer h5 {
+  color: var(--text-dark) !important;
+}
+.footer-area p, .footer-area a, .footer-area li,
+footer p, footer a, footer li {
+  color: var(--text-body) !important;
+}
+.footer-area a:hover, footer a:hover {
+  color: var(--primary) !important;
+}
+.footer-social a {
+  background: rgba(0,102,179,0.08) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--primary) !important;
+}
+.footer-social a:hover {
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: var(--white) !important;
+}
+.footer-grid {
+  border-bottom-color: var(--border) !important;
+}
+.footer-bottom {
+  border-top: 1px solid var(--border) !important;
+  color: var(--text-light) !important;
+}
+.footer-bottom p, .footer-bottom a {
+  color: var(--text-light) !important;
+}
+
+/* ---- Scrolling ticker bar: keep brand color ---- */
+.ticker-bar {
+  background: var(--primary) !important;
+}
+
+/* ---- Stat counter section: keep brand color ---- */
+.stat-counter-section {
+  background: var(--primary) !important;
+}
+
+/* ---- CTA banner: keep brand gradient ---- */
+.cta-banner {
+  /* Keep the primary brand gradient for CTA */
+}
+
+/* ---- Section gray: white ---- */
+.section-gray {
+  background: var(--white) !important;
+}
+
+/* ---- Cards: ensure proper borders on white bg ---- */
+.service-card,
+.division-card,
+.tool-card,
+.pricing-preview-card,
+.sla-card,
+.team-card,
+.contact-info-card,
+.blog-card {
+  border: 1px solid var(--border) !important;
+}
+
+/* ---- Hero CTA buttons: fix for white bg ---- */
+.hero-ctas .btn-outline {
+  color: var(--primary) !important;
+  border-color: var(--primary) !important;
+  background: transparent !important;
+}
+.hero-ctas .btn-outline:hover {
+  background: var(--primary) !important;
+  color: var(--white) !important;
+  border-color: var(--primary) !important;
+}
+
+/* ---- Preloader: white ---- */
+#preloader {
+  background: var(--white) !important;
+}
+.preloader-dot {
+  background: var(--primary) !important;
+}
+.preloader-dot:nth-child(2) {
+  background: var(--secondary) !important;
 }
